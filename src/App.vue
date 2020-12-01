@@ -1,7 +1,17 @@
 <template>
     <div class="root">
         <img alt="Vue logo" src="./assets/logo.png" />
-        <TopInput tit='vue3.0+ts' @onAdd='addData'/>
+        <h1>vue3.0+ts</h1>
+        <div class="flex-align">
+            <el-input
+                placeholder="请输入内容"
+                prefix-icon="el-icon-edit"
+                v-model="inputVal"
+                clearable
+            >
+            </el-input>
+            <el-button type='primary' style="margin-left:20px;width:100px" @click="onAdd">添加</el-button>
+        </div>
         <div style="margin-top:50px">
           <div class="item" v-for="(item,index) in todo" :key="index">{{item}} <span class="el-icon-circle-close del" @click="onDel(index)"></span> </div>
         </div> 
@@ -9,28 +19,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent,reactive,toRefs } from "vue";
-import TopInput from "./components/topInput.vue";
+import { defineComponent,reactive,ref,toRefs } from "vue";
 
 export default defineComponent({
     name: "App",
-    components: {
-        TopInput
-    },
     setup(){
+        let inputVal = ref('')
         let list:any[string] = reactive({
-          todo:[]
+          todo:['hello vue3 !']
         })
       function onDel(index:number){
         list.todo.splice(index,1)
       }
-      function addData(data:any){
-       list.todo.unshift(data)
+      function onAdd(){
+        if( !inputVal.value)return
+       list.todo.unshift(inputVal.value)
+       inputVal.value = ''
       }
       return {
         ...toRefs(list),
         onDel,
-        addData
+        onAdd,
+        inputVal
       }
     }
 });
@@ -48,6 +58,10 @@ export default defineComponent({
 .root{
  max-width: 740px;
  margin:50px auto;
+}
+.flex-align {
+    display: flex;
+    align-items: center;
 }
 .item{
   position: relative;
