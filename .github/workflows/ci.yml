@@ -1,4 +1,4 @@
-name: vue3+ts demo
+name: 🚀vue3+ts demo
 on:
   push:
     branches:
@@ -16,7 +16,7 @@ jobs:
         npm install
         npm run build
         cp dist/index.html dist/404.html
-    - name: Deploy
+    - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
