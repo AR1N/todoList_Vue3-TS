@@ -1,7 +1,5 @@
 
 
 module.exports = {
-    build:{
-        assetsPubilcPath:'./'
-    }
+    publicPath:'./'
 }
