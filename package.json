@@ -2,6 +2,7 @@
   "name": "vue3ts",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/AR1N/todoList_Vue3-TS",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
